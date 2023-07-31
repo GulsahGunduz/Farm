@@ -5,21 +5,38 @@ using UnityEngine;
 public class BagController : MonoBehaviour
 {
     [SerializeField] Transform bag;
+    public List<ProductData> productDataList;
 
-    private void OnTriggerEnter(Collider other)
+    Vector3 boxSize;
+
+
+    public void AddProductToBag(ProductData productData)
     {
-        if (other.CompareTag("Respawn"))
-        {
-            AddProductToBag(other.gameObject);
-        }
+        GameObject boxProduct = Instantiate(productData.productPrefab, Vector3.zero, Quaternion.identity);
+        boxProduct.transform.SetParent(bag, true);
+
+        CalculateObjectSize(boxProduct);
+        float yPos = CalculateNewYPositionOfBox(); 
+
+        boxProduct.transform.localPosition = Vector3.zero;
+        boxProduct.transform.localRotation = Quaternion.identity;
+        boxProduct.transform.localPosition = new Vector3(0, yPos, 0);
+        productDataList.Add(productData);
     }
 
-    public void AddProductToBag(GameObject box)
+    float CalculateNewYPositionOfBox()
     {
-        box.transform.SetParent(bag, true);
+        float newYPos = boxSize.y * productDataList.Count;
+        return newYPos;
+    }
 
-        box.transform.localPosition = Vector3.zero;
-        box.transform.localRotation = Quaternion.identity;
+    void CalculateObjectSize(GameObject obj)
+    {
+        if (boxSize == Vector3.zero)
+        {
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            boxSize = renderer.bounds.size;
+        }
     }
 
 }

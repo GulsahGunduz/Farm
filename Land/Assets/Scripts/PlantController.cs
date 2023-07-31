@@ -5,8 +5,10 @@ using DG.Tweening;
 
 public class PlantController : MonoBehaviour
 {
+    [SerializeField] ProductData productData;
     [SerializeField] float growUpTime;
     Vector3 originalScale;
+    BagController bagController;
     bool isReadyToPick;
 
     void Start()
@@ -19,6 +21,8 @@ public class PlantController : MonoBehaviour
     {
         if (other.CompareTag("Player") && isReadyToPick)
         {
+            bagController = other.gameObject.GetComponent<BagController>();
+            bagController.AddProductToBag(productData);
             StartCoroutine(ProductPicked());
         }
     }
