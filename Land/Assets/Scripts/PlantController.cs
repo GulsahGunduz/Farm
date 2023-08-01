@@ -22,8 +22,13 @@ public class PlantController : MonoBehaviour
         if (other.CompareTag("Player") && isReadyToPick)
         {
             bagController = other.gameObject.GetComponent<BagController>();
-            bagController.AddProductToBag(productData);
-            StartCoroutine(ProductPicked());
+
+            if (bagController.IsEmptySpace())
+            {
+                bagController.AddProductToBag(productData);
+                StartCoroutine(ProductPicked());
+            }
+
         }
     }
 
