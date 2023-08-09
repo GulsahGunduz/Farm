@@ -5,9 +5,9 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
-
     [SerializeField] TextMeshProUGUI coinText;
+
+    public static UIManager instance;
 
     private void Awake()
     {

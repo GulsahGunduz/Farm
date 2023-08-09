@@ -7,8 +7,10 @@ public class PlantController : MonoBehaviour
 {
     [SerializeField] ProductData productData;
     [SerializeField] float growUpTime;
+
     Vector3 originalScale;
     BagController bagController;
+    
     bool isReadyToPick;
 
     void Start()
