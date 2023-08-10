@@ -7,14 +7,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] FloatingJoystick joystick;
     [SerializeField] float moveSpeed;
     [SerializeField] float rotateSpeed;
-
     Animator animator;
     Vector3 moveVector;
     CharacterController characterController;
-
-    float gravity = -9.81f;
-    float gravityMultiplier = 3f;
-    float gravityVelocity;
 
     void Awake()
     {
@@ -45,20 +40,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("run", false);
             animator.SetTrigger("idle");
         }
-        ApplyGravity();
         characterController.Move(moveVector);
-    }
-
-    private void ApplyGravity()
-    {
-        if(characterController.isGrounded && gravityVelocity < 0.0f)
-        {
-            gravityVelocity = -1f;
-        }
-        else
-        {
-            gravityVelocity += gravity * gravityMultiplier * Time.deltaTime;
-        }
-        moveVector.y = gravityVelocity;
     }
 }
