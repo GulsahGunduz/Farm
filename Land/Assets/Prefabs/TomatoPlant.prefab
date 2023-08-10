@@ -223,7 +223,7 @@ Transform:
   - {fileID: 8795647407871798825}
   - {fileID: 1389700558156830634}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &3311754005600524026
 LODGroup:
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productData: {fileID: 11400000, guid: ecc713e8a863e4c6d8ad28d05a17cedb, type: 2}
-  growUpTime: 5
+  growUpTime: 20
 --- !u!65 &8949333624398652482
 BoxCollider:
   m_ObjectHideFlags: 0

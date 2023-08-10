@@ -6,7 +6,7 @@ using DG.Tweening;
 public class PlantController : MonoBehaviour
 {
     [SerializeField] ProductData productData;
-    [SerializeField] float growUpTime;
+    [SerializeField] float growUpTime = 10f;
 
     Vector3 originalScale;
     BagController bagController;
